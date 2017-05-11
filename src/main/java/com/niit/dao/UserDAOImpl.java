@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import com.niit.model.Authorization;
+import com.niit.model.Product;
 import com.niit.model.User;
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -29,5 +30,13 @@ SessionFactory sessionFactory;
 		Session session=sessionFactory.getCurrentSession();
 			session.delete(u);
 		}
+
+	
+	public User getUserById(int UserId) {
+		Session session=this.sessionFactory.getCurrentSession();
+		User p=(User) session.get(User.class,new Integer(UserId));
+		System.out.println("data of User by id="+p);
+		return p;
+	}
 
 }

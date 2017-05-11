@@ -1,5 +1,8 @@
 <%@include file="header.jsp" %>
 
+<security:authorize access="hasRole('ROLE_ADMIN')">
+<jsp:forward page="admin/adminHome"></jsp:forward>
+</security:authorize>
 	<div class="container" align="center" id="col1">
 		<div class="row-sm-2 row-md-12">
 			<div class="col-sm-2 col-md-12">

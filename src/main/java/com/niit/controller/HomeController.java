@@ -40,12 +40,7 @@ public void setUserService(UserService userService) {
 			return "index";
 		}
 		
-		@RequestMapping("/login")
-			public String login(){
-			
-			
-			return "SignUp";
-		}
+		
 		@RequestMapping("/aboutus")
 		public String aboutus(){
 		
@@ -69,17 +64,31 @@ public void setUserService(UserService userService) {
 	}
 		@RequestMapping("/SignUp")
 		public String SignUp(Model m){
-			m.addAttribute("signup",new User())	;
+			m.addAttribute("user",new User())	;
 	//		m.addAttribute("listproducts",productService.getAllProducts())	;
 				
 		return "SignUp";
+		}
+		@RequestMapping("/login")
+		public String login(Model m){
+			System.out.println("login");
+			m.addAttribute("user",new User())	;
+				
+		return "login";
 		}
 		@RequestMapping("/Home")
 		public String Home(){
 			
 		return "index";
 		}
-		@RequestMapping("/product")
+		
+		@RequestMapping("/admin/adminHome")
+		public String adminHome(Model m)
+		{
+			return "adminhome";
+			
+		}
+		@RequestMapping("/admin/pr")
 		public String product(Model m){
 		m.addAttribute("product",new Product())	;
 		m.addAttribute("listproducts",productService.getAllProducts())	;
@@ -147,7 +156,7 @@ public void setUserService(UserService userService) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			    model.addAttribute("listproducts",productService.getAllProducts());
+			   // model.addAttribute("listproducts",productService.getAllProducts());
 				}
 				else
 				{
@@ -160,8 +169,8 @@ public void setUserService(UserService userService) {
 			    
 				}
 
-		@RequestMapping("/add1")
-		public	String insertUser(@Valid @ModelAttribute("signup")User signup,BindingResult result)
+		@RequestMapping(value="/add1", method=RequestMethod.POST)
+	public	String insertUser(@Valid @ModelAttribute("user")User signup,BindingResult result)
 			{
 					if(result.hasErrors()){
 						return "SignUp";
@@ -172,6 +181,16 @@ public void setUserService(UserService userService) {
 				    
 				    return "successproduct";
 					}
+			}
+		@RequestMapping(value="/add2", method=RequestMethod.POST)
+
+		public String loginUser(@Valid @ModelAttribute("user")User l,BindingResult result)
+			{
+			System.out.println("add2");
+						return "index";
+						
+					
+					
 			}
 		
 		@RequestMapping("/delete/{id}")

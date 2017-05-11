@@ -1,3 +1,5 @@
+<%@include file="header.jsp" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -10,17 +12,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-<h2>Product details Required*</h2>
+<body style="background-color:white; background-image:none;">
+<h2 >Product details Required*</h2>
 
 
 ${pageContext.request.contextPath}
 
 
-<form:form  action="${pageContext.request.contextPath}/addP" commandName="product" method="post" enctype="multipart/form-data" >
+<form:form  action="${pageContext.request.contextPath}/addP" commandName="product" method="post" enctype="multipart/form-data" style="background-color:white;">
 	<c:if test="${!empty product.productname}">
 			<label>Product I.D : </label>
 			<form:input path="productid" disabled="true" readonly="true"/><form:errors path="productid"/>
+			<form:hidden path="productid"/>
 			<br>
 	</c:if>
 	
@@ -65,9 +68,9 @@ ${pageContext.request.contextPath}
 	</form:form>
 
 
-<h3>Product List</h3>
+<h3 style="background-color:white;">Product List</h3>
 <c:if test="${!empty listproducts}">
-    <div class="table-responsive">
+    <div class="table-responsive" style="background-color:white;">
     <table class="table table-striped table-bordered">
     <thead>
     <tr>
@@ -101,3 +104,4 @@ ${pageContext.request.contextPath}
 
 </body>
 </html>
+<%@include file="footer.jsp" %>

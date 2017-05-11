@@ -3,6 +3,7 @@
 
 <%@page isELIgnored="false" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <c:url var="css" value="/resources/bootstrap/css"/>
 <c:url var="js" value="/resources/bootstrap/js"/>
 <c:url var="img" value="/resources/images"/>
@@ -103,8 +104,16 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<span class="glyphicon glyphicon-user"></span></a>
 						<ul class="dropdown-menu">
+						<security:authorize access="hasRole('ROLE_ADMIN')">
+						<li><a href="${pageContext.request.contextPath}/admin/adminProduct"><span
+							class="glyphicon glyphicon-user"></span>ADMIN</a></li></security:authorize>
+						<security:authorize access="isAnonymous()">
 							<li><a href="SignUp">Sign-up</a></li>
 							<li><a href="login">Login</a></li>
+							</security:authorize>
+							<security:authorize access="isAuthenticated()">
+							<li><a href="logout">Logout</a></li>
+							</security:authorize> 
 							<li><a href="contactus">ContactUs</a>
 							<li class="divider"></li>
 						</ul>

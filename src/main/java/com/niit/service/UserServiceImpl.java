@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.dao.UserDAO;
+import com.niit.model.Product;
 import com.niit.model.User;
 
 @Service
@@ -21,6 +22,10 @@ UserDAO userDAO;
 public void deleteUser(User p) {
 	userDAO.deleteUser(p);
 	
+}
+@Transactional
+public User getUserById(int UserId) {
+	return this.userDAO.getUserById(UserId);
 }
 
 }

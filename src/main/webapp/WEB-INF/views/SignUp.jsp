@@ -1,4 +1,6 @@
 <%@include file="header.jsp" %>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+				
 <title>Register | Login</title>
 	<div class="container" style="margin-top:100px;">
 		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#pop">Sign Up</button>
@@ -12,7 +14,7 @@
 					<div class="modal-body">
 					<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 					
-					<form:form  action="add1" commandName="signup" method="post" enctype="multipart/form-data" >
+					<form:form  action="add1" commandName="user" method="post" enctype="multipart/form-data" >
 					
 							<div class="form-group">
 							<label>User Name : </label>
@@ -55,29 +57,7 @@
 					</form:form>
 					</div></div>
 	</div></div>
-		<button type="button" style="margin-left:500px;" class="btn btn-success" data-toggle="modal" data-target="#pop1">Login</button>
-		<div class="modal fade" id="pop1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2>Login to OneShop</h2>
-					
-				</div>
-					<div class="modal-body">
-						<form role="form" >
-							<div class="form-group">
-								<input class="form-control" type="text" name="username" placeholder="Your E-mail address" />
-							</div>
-							<div class="form-group">
-								<input class="form-control" type="password" name="password" placeholder="Enter password"  />
-							</div>
-							
-							<div class="btn-group">
-								<button type="button" class="btn btn-success" style="width:570px;">Register</button>
-							</div>
-						</form>
-					</div></div>
-	</div></div></div>
+		
 	
 	
 	
